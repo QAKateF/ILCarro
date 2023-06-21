@@ -1,5 +1,6 @@
 package manager;
 
+import Models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,16 +19,21 @@ public class HelperUser extends HelperBase{
     }
 
     public void openLoginForm() {
-        click(By.cssSelector("a[ng-reflect-router-link='login']"));
+        click(By.xpath("//a[.=' Log in ']"));
     }
 
     public void fillLoginForm(String email, String password){
         type(By.xpath("//input[@id='email']"), email);
         type(By.xpath("//input[@id='password']"), password);
     }
+    public void fillLoginForm(User user){
+        type(By.xpath("//input[@id='email']"), user.getEmail());
+        type(By.xpath("//input[@id='password']"), user.getPassword());
+    }
+
 
     public void submitLoginForm() {
-        click(By.xpath("//button[@type='submit']"));
+        wd.findElement(By.xpath("//button[@type='submit']")).submit();
     }
 
 }
