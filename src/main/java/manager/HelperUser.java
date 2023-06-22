@@ -6,6 +6,12 @@ import org.openqa.selenium.WebDriver;
 
 public class HelperUser extends HelperBase{
 
+    public Object closeDialog;
+
+    public void closeDialog() {
+        click(By.xpath("//button[text()='Ok']"));
+    }
+
     public HelperUser(WebDriver wd) {
         super(wd);
     }
