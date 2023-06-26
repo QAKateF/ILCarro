@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public class HelperUser extends HelperBase{
 
-    public Object closeDialog;
-
     public void closeDialog() {
         click(By.xpath("//button[text()='Ok']"));
     }
@@ -36,10 +34,18 @@ public class HelperUser extends HelperBase{
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPassword());
     }
-
-
     public void submitLoginForm() {
         wd.findElement(By.xpath("//button[@type='submit']")).submit();
     }
 
+    public boolean isLoggedSuccess() {
+        return isElementPresent(By.xpath("//h2 [contains(text(),'success')]"));
+    }
+
+    public void login(User user){
+        openLoginForm();
+        fillLoginForm(user);
+        submitLoginForm();
+        closeDialog();
+    }
 }
