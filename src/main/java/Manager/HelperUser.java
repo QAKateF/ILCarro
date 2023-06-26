@@ -1,4 +1,4 @@
-package manager;
+package Manager;
 
 import Models.User;
 import org.openqa.selenium.By;
@@ -26,6 +26,10 @@ public class HelperUser extends HelperBase{
         click(By.xpath("//a[.=' Log in ']"));
     }
 
+    public void openRegistrationForm(){
+        wd.findElement(By.xpath("//*[.=' Sign up ']")).click();
+    }
+
     public void fillLoginForm(String email, String password){
         type(By.xpath("//input[@id='email']"), email);
         type(By.xpath("//input[@id='password']"), password);
@@ -34,6 +38,15 @@ public class HelperUser extends HelperBase{
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPassword());
     }
+
+    public void fillRegistrationForm(User user){
+        type(By.xpath("//input[@id='name']"), user.getName());
+        type(By.xpath("//input[@id='lastName']"), user.getLastName());
+        type(By.xpath("//input[@id='email']"), user.getEmail());
+        type(By.xpath("//input[@id='password']"), user.getPassword());
+        click(By.cssSelector("label[for='terms-of-use']"));
+    }
+
     public void submitLoginForm() {
         wd.findElement(By.xpath("//button[@type='submit']")).submit();
     }
@@ -48,4 +61,9 @@ public class HelperUser extends HelperBase{
         submitLoginForm();
         closeDialog();
     }
+
+    public void submitLogin(){
+        wd.findElement(By.xpath("//button[@type='submit']")).submit();
+    }
+
 }

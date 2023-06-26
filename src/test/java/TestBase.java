@@ -1,4 +1,4 @@
-import manager.ApplicationManager;
+import Manager.ApplicationManager;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 

@@ -25,5 +25,8 @@ public void precondition(){
                 .price("300")
                 .about("")
                 .build();
+        app.getCar().openCarForm();
+        app.getCar().fillCarForm(car);
+        app.getUser().submitLogin();
     }
 }

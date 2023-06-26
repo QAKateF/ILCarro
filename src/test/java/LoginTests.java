@@ -8,9 +8,10 @@ public class LoginTests extends TestBase{
 
     @BeforeMethod
     public void precondition(){
-        if(app.getUser().isLogged()){
-            app.getUser().logout();
-        }
+//        if(app.getUser().isLogged()){
+//            app.getUser().logout();
+//        }
+       if(app.getUser().isLogged()) app.getUser().logout();
     }
 
     @Test

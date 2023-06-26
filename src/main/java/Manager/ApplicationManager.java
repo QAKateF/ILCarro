@@ -1,4 +1,4 @@
-package manager;
+package Manager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +15,10 @@ public class ApplicationManager {
 
     public HelperUser getUser() {
         return user;
+    }
+
+    public HelperCar getCar() {
+        return car;
     }
 
     @BeforeSuite

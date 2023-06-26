@@ -1,4 +1,4 @@
-package manager;
+package Manager;
 
 import Models.Car;
 import org.openqa.selenium.By;
