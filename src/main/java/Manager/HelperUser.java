@@ -2,7 +2,12 @@ package Manager;
 
 import Models.User;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import javax.swing.*;
 
 public class HelperUser extends HelperBase{
 
@@ -44,7 +49,21 @@ public class HelperUser extends HelperBase{
         type(By.xpath("//input[@id='lastName']"), user.getLastName());
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPassword());
-        click(By.cssSelector("label[for='terms-of-use']"));
+        clickCheckBox();
+    }
+
+    public void clickCheckBox(){
+        //variant 1
+//        click(By.cssSelector("label[for='terms-of-use']"));
+        //variant 2
+//        JavascriptExecutor js = (JavascriptExecutor) wd;
+//        js.executeScript("document.querySelector('#terms-of-use').click()");//document.querySelector('#terms-of-use').checked
+        //variant 3
+        Rectangle rect = wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
+        int x = rect.getX() + 5;
+        int y = rect.getY() + rect.getHeight() / 4;
+        Actions action = new Actions(wd);
+        action.moveByOffset(x, y).click().perform();
     }
 
     public void submitLoginForm() {
@@ -53,6 +72,9 @@ public class HelperUser extends HelperBase{
 
     public boolean isLoggedSuccess() {
         return isElementPresent(By.xpath("//h2 [contains(text(),'success')]"));
+    }
+    public boolean isRegistrationNotSuccess() {
+        return isElementPresent(By.xpath("//div[@class='ng-star-inserted']"));
     }
 
     public void login(User user){

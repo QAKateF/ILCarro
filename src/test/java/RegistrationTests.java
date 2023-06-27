@@ -19,12 +19,26 @@ public class RegistrationTests extends TestBase {
                 .withLastName("Day")
                 .withEmail("qa38" + i + "@mail.nm")
                 .withPassword("Ghjk1234!");
-
         app.getUser().openRegistrationForm();
         app.getUser().fillRegistrationForm(user);
         app.getUser().submitLogin();
+        app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isLoggedSuccess());
+    }
 
+    @Test
+    public void registrationNegativeWrongPassword(){
+        int i = (int)(System.currentTimeMillis()/1000)%3600;
+        User user = new User()
+                .withName("Good")
+                .withLastName("Day")
+                .withEmail("qa38" + i + "@mail.nm")
+                .withPassword("Ghjk1234");
+        app.getUser().openRegistrationForm();
+        app.getUser().fillRegistrationForm(user);
+        app.getUser().submitLogin();
+        app.getUser().pause(3000);
+        Assert.assertTrue(app.getUser().isRegistrationNotSuccess());
     }
 
     @AfterMethod
