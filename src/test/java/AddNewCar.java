@@ -14,7 +14,8 @@ public void precondition(){
     @Test
     public void addNewCarPositive(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
-        Car car = Car.builder().location("Tel Aviv")
+        Car car = Car.builder()
+                .location("Tel Aviv")
                 .manufacture("KIA")
                 .model("Sport")
                 .year("2023")

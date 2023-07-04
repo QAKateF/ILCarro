@@ -53,6 +53,7 @@ public class HelperUser extends HelperBase{
     }
 
     public void clickCheckBox(){
+        System.out.println("Clicked Checkbox");
         //variant 1
 //        click(By.cssSelector("label[for='terms-of-use']"));
         //variant 2

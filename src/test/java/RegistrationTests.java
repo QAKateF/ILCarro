@@ -22,6 +22,8 @@ public class RegistrationTests extends TestBase {
         app.getUser().openRegistrationForm();
         app.getUser().fillRegistrationForm(user);
         app.getUser().submitLogin();
+        logger.info("registrationPositive starts with credentials: email: "
+                + user.getEmail() + " & password: " + user.getPassword());
         app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isLoggedSuccess());
     }
