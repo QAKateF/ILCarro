@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class AddNewCar extends TestBase{
     @BeforeMethod
 public void precondition(){
-        if(app.getUser().isLogged() == false){
+        if(!app.getUser().isLogged()){
             app.getUser().login(new User().withEmail("qa38@mail.mn").withPassword("Ghjk1234!"));
         }
     }

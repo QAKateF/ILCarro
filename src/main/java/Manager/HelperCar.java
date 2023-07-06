@@ -21,7 +21,7 @@ public class HelperCar extends HelperBase{
     }
 
     public void fillCarForm(Car car){
-        if(isCarFormPresent()==false) return;
+        if(!isCarFormPresent()) return;
         typeLocation(car.getLocation());
         type(By.id("make"), car.getManufacture());
         type(By.id("model"), car.getModel());

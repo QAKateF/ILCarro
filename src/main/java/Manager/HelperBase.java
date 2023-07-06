@@ -1,8 +1,6 @@
 package Manager;
-
 import com.google.common.io.Files;
 import org.openqa.selenium.*;
-
 import java.io.File;
 import java.io.IOException;
 

@@ -75,7 +75,7 @@ public class HelperUser extends HelperBase{
         return isElementPresent(By.xpath("//h2 [contains(text(),'success')]"));
     }
     public boolean isRegistrationNotSuccess() {
-        return isElementPresent(By.xpath("//div[@class='ng-star-inserted']"));
+        return isElementPresent(By.xpath("//div[@class='error']"));
     }
 
     public void login(User user){
