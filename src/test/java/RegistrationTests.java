@@ -8,7 +8,9 @@ public class RegistrationTests extends TestBase {
 
     @BeforeMethod
     public void precondition(){
-        if(app.getUser().isLogged()) app.getUser().logout();
+        if(app.getUser().isLogged()) {
+            app.getUser().logout();
+        }
     }
 
     @Test
@@ -39,6 +41,8 @@ public class RegistrationTests extends TestBase {
         app.getUser().openRegistrationForm();
         app.getUser().fillRegistrationForm(user);
         app.getUser().submitLogin();
+        logger.info("registrationNegativeWrongPassword starts with credentials: email: "
+                + user.getEmail() + " & password: " + user.getPassword());
         app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isRegistrationNotSuccess());
     }

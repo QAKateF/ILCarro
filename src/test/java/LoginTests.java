@@ -12,6 +12,7 @@ public class LoginTests extends TestBase{
     public void precondition(){
         if(app.getUser().isLogged()){
             app.getUser().logout();
+            app.getUser().pause(1000);
         }
     }
 

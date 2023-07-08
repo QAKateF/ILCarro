@@ -49,6 +49,7 @@ public class HelperUser extends HelperBase{
         type(By.xpath("//input[@id='lastName']"), user.getLastName());
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPassword());
+        pause(2000);
         clickCheckBox();
     }
 
@@ -57,14 +58,14 @@ public class HelperUser extends HelperBase{
         //variant 1
 //        click(By.cssSelector("label[for='terms-of-use']"));
         //variant 2
-//        JavascriptExecutor js = (JavascriptExecutor) wd;
-//        js.executeScript("document.querySelector('#terms-of-use').click()");//document.querySelector('#terms-of-use').checked
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').click()");//document.querySelector('#terms-of-use').checked
         //variant 3
-        Rectangle rect = wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
-        int x = rect.getX() + 5;
-        int y = rect.getY() + rect.getHeight() / 4;
-        Actions action = new Actions(wd);
-        action.moveByOffset(x, y).click().perform();
+//        Rectangle rect = wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
+//        int x = rect.getX() + 5;
+//        int y = rect.getY() + rect.getHeight() / 4;
+//        Actions action = new Actions(wd);
+//        action.moveByOffset(x, y).click().perform();
     }
 
     public void submitLoginForm() {
@@ -74,8 +75,12 @@ public class HelperUser extends HelperBase{
     public boolean isLoggedSuccess() {
         return isElementPresent(By.xpath("//h2 [contains(text(),'success')]"));
     }
+
+//    public boolean isRegistrationNotSuccess() {
+//        return isElementPresent(By.xpath("//div[@class='error']"));
+//    }
     public boolean isRegistrationNotSuccess() {
-        return isElementPresent(By.xpath("//div[@class='error']"));
+        return isElementPresent(By.xpath("//h1 [contains(text(),'Registration failed')]"));
     }
 
     public void login(User user){

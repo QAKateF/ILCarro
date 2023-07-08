@@ -20,6 +20,20 @@ public class HelperCar extends HelperBase{
         click(By.xpath("//a[.=' Let the car work ']"));
     }
 
+    public void addAnotherCar(){
+        pause(5000);
+        click(By.xpath("//button[.='Add another car']"));
+    }
+
+    public void closeCarForm(){
+        pause(2000);
+        Rectangle rect = wd.findElement(By.cssSelector(".cdk-overlay-backdrop.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing")).getRect();
+        int x = rect.getX() + 10;
+        int y = rect.getY() + 10;
+        Actions action = new Actions(wd);
+        action.moveByOffset(x, y).click().perform();
+    }
+
     public void fillCarForm(Car car){
         if(!isCarFormPresent()) return;
         typeLocation(car.getLocation());
@@ -36,6 +50,10 @@ public class HelperCar extends HelperBase{
     public void typeLocation(String address){
         type(By.id("pickUpPlace"), address);
         click(By.cssSelector("div.pac-item"));
+    }
+
+    public boolean isAddedSuccess() {
+        return isElementPresent(By.xpath("//h2 [contains(text(),'added successful')]"));
     }
 
 //    public void clickSerialNumber(String carRegNumber){

@@ -1,5 +1,7 @@
 import Models.Car;
 import Models.User;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -29,5 +31,11 @@ public void precondition(){
         app.getCar().openCarForm();
         app.getCar().fillCarForm(car);
         app.getUser().submitLogin();
+        Assert.assertTrue(app.getCar().isAddedSuccess());
+    }
+
+    @AfterMethod
+    public void postcondition(){
+        app.getCar().closeCarForm();
     }
 }
