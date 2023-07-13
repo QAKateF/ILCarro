@@ -1,3 +1,4 @@
+import Manager.ProviderData;
 import Manager.TestNGListener;
 import Models.User;
 import org.testng.Assert;
@@ -15,7 +16,6 @@ public class LoginTests extends TestBase{
             app.getUser().pause(1000);
         }
     }
-
     @Test
     public void loginPositive(){
         app.getUser().openLoginForm();
@@ -42,7 +42,14 @@ public class LoginTests extends TestBase{
         app.getUser().pause(1000);
         Assert.assertTrue(app.getUser().isLoggedSuccess());
     }
-
+    @Test(dataProvider = "userDTO",dataProviderClass = ProviderData.class)
+    public void loginPositiveUserDTO(User user) {
+        app.getUser().openLoginForm();
+        app.getUser().fillLoginForm(user);
+        app.getUser().submitLoginForm();
+        app.getUser().pause(1000);
+        Assert.assertTrue(app.getUser().isLoggedSuccess());
+    }
     @AfterMethod
     public void postcondition(){
         app.getUser().closeDialog();
