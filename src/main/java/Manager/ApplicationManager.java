@@ -11,19 +11,26 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
-    //    WebDriver wd;
-    EventFiringWebDriver wd;
+    EventFiringWebDriver wd; //WebDriver wd;
     HelperUser user;
     HelperCar car;
     HelperSearch search;
+    Properties properties;
     String browser;
     public ApplicationManager(String browser) {
         this.browser = browser;
+        properties = new Properties();
     }
     public HelperUser getUser() {
         return user;
@@ -34,8 +41,13 @@ public class ApplicationManager {
     public HelperSearch getSearch() {
         return search;
     }
+    public String getEmail() {return properties.getProperty("web.email");}
+    public String getPassword() {return properties.getProperty("web.password");}
     @BeforeSuite
-    public void init(){
+    public void init() throws IOException {
+        //properties.load(new FileReader(new File("src/test/resources/prod.properties")));
+        String target = System.getProperty("target", "prod");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         if(browser.equals(BrowserType.CHROME)) {
             wd = new EventFiringWebDriver(new ChromeDriver()); //wd = new ChromeDriver();
             logger.info("Tests start on Chrome");
@@ -48,7 +60,7 @@ public class ApplicationManager {
         car = new HelperCar(wd);
         search = new HelperSearch(wd);
         wd.manage().window().maximize();
-        wd.navigate().to("https://ilcarro.web.app/search");
+        wd.navigate().to(properties.getProperty("web.baseURL"));  //wd.navigate().to("https://ilcarro.web.app/search");
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 

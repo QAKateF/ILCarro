@@ -25,6 +25,14 @@ public class LoginTests extends TestBase{
         Assert.assertTrue(app.getUser().isLoggedSuccess());
     }
     @Test
+    public void loginPositiveProps(){
+        app.getUser().openLoginForm();
+        app.getUser().fillLoginForm(app.getEmail(), app.getPassword());
+        app.getUser().submitLoginForm();
+        app.getUser().pause(1000);
+        Assert.assertTrue(app.getUser().isLoggedSuccess());
+    }
+    @Test
     public void loginPositiveUser() {
         User user = new User().withEmail("qa38@mail.mn").withPassword("Ghjk1234!");
         app.getUser().openLoginForm();
@@ -42,7 +50,7 @@ public class LoginTests extends TestBase{
         app.getUser().pause(1000);
         Assert.assertTrue(app.getUser().isLoggedSuccess());
     }
-    @Test(dataProvider = "userDTO",dataProviderClass = ProviderData.class)
+    @Test (dataProvider = "userDTO",dataProviderClass = ProviderData.class)
     public void loginPositiveUserDTO(User user) {
         app.getUser().openLoginForm();
         app.getUser().fillLoginForm(user);

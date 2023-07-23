@@ -78,4 +78,5 @@ public class HelperCar extends HelperBase{
     public void select(By locator, String option){
         new Select(wd.findElement(locator)).selectByValue(option);
     }
+
 }

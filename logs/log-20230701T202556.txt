@@ -1,1 +1,0 @@
-20:26:12 INFO  TestBase - registrationPositive starts with credentials: email: qa381571@mail.nm & password: Ghjk1234!

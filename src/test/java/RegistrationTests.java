@@ -1,3 +1,4 @@
+import Manager.ProviderData;
 import Models.User;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -45,6 +46,17 @@ public class RegistrationTests extends TestBase {
                 + user.getEmail() + " & password: " + user.getPassword());
         app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isRegistrationNotSuccess());
+    }
+
+    @Test (dataProvider = "userDtoCSV", dataProviderClass = ProviderData.class)
+    public void registrationPositiveDTO(User user){
+        app.getUser().openRegistrationForm();
+        app.getUser().fillRegistrationForm(user);
+        app.getUser().submitLogin();
+        logger.info("registrationPositive starts with credentials: email: "
+                + user.getEmail() + " & password: " + user.getPassword());
+        app.getUser().pause(3000);
+        Assert.assertTrue(app.getUser().isLoggedSuccess());
     }
 
     @AfterMethod
