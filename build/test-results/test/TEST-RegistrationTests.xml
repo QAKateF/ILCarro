@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="RegistrationTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-07-24T17:16:00" hostname="LAPTOP-31DUH12N" time="53.97">
+  <properties/>
+  <testcase name="registrationNegativeWrongPassword" classname="RegistrationTests" time="5.897"/>
+  <testcase name="registrationPositive" classname="RegistrationTests" time="5.942"/>
+  <testcase name="registrationPositiveDTO[0](Models.User@56078cea)" classname="RegistrationTests" time="5.929"/>
+  <testcase name="registrationPositiveDTO[1](Models.User@67fc2aad)" classname="RegistrationTests" time="5.92"/>
+  <testcase name="registrationPositiveDTO[2](Models.User@54cf7c6a)" classname="RegistrationTests" time="5.905"/>
+  <testcase name="registrationPositiveDTO[3](Models.User@895416d)" classname="RegistrationTests" time="5.906"/>
+  <testcase name="registrationPositiveDTO[4](Models.User@512d6e60)" classname="RegistrationTests" time="5.912"/>
+  <testcase name="registrationPositiveDTO[5](Models.User@2503ec73)" classname="RegistrationTests" time="6.146"/>
+  <system-out><![CDATA[Clicked Checkbox
+Clicked Checkbox
+Clicked Checkbox
+Clicked Checkbox
+Clicked Checkbox
+Clicked Checkbox
+Clicked Checkbox
+Clicked Checkbox
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

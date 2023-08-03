@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LoginTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-08-03T11:50:13" hostname="LAPTOP-31DUH12N" time="18.256">
+  <properties/>
+  <testcase name="loginPositive" classname="LoginTests" time="1.594"/>
+  <testcase name="loginPositiveProps" classname="LoginTests" time="1.628"/>
+  <testcase name="loginPositiveUser" classname="LoginTests" time="1.58"/>
+  <testcase name="loginPositiveUserDTO[0](Models.User@5488b5c5)" classname="LoginTests" time="1.615"/>
+  <testcase name="loginPositiveUserDTO[1](Models.User@5328a9c1)" classname="LoginTests" time="1.577"/>
+  <testcase name="loginPositiveUserDTO[2](Models.User@76954a33)" classname="LoginTests" time="1.517"/>
+  <testcase name="loginPositiveUserData" classname="LoginTests" time="1.492"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
