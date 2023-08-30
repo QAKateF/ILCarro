@@ -66,7 +66,7 @@ public class ApplicationManager {
 
     @AfterSuite
     public void tearDown(){
-        //wd.quit();
+        wd.quit();
     }
 
     @BeforeMethod
